@@ -59,3 +59,14 @@ The command will run the code in debug mode.
   cd build
   electron .
   ```
+
+## Download the release
+
+[https://github.com/JerrieYuan/uvss_api_test_tool/releases](https://github.com/JerrieYuan/uvss_api_test_tool/releases)
+
+## Watch the online Demo 
+
+[https://jerrieyuan.github.io/uvss_api_test_tool/](https://jerrieyuan.github.io/uvss_api_test_tool/)
+
+Because of the security settings of the browser, you can not test the API directly with the online demo.  
+Please download the [release version](https://github.com/JerrieYuan/uvss_api_test_tool/releases) for test.
