@@ -38,6 +38,12 @@ class UTTPanel extends Component {
             </Rb.Panel>
           </Rb.Col>
         </Rb.Row>
+        <Rb.Row>
+          <p style={{textAlign:"center"}}>
+            Download the test Server : {"  "}
+            <a href="./downloads/server.bin">Linux</a> | <a href="./downloads/server.exe">Windows</a>
+          </p>
+        </Rb.Row>
       </Rb.Grid>
     );
   }
