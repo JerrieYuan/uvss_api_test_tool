@@ -19,9 +19,9 @@ sudo apt-get install npm
 sudo npm install -g create-react-app
 sudo npm install -g react-scripts
 ```
-You may need to set proxy if you are in China, or use `cnpm` instead of `npm`. 
-The `cnpm` is provided by taobao.
-Refer to [npm.taobao.org](https://npm.taobao.org) to learn how to install it.
+You may need to set proxy if you are in China, or use `cnpm` instead of `npm`.   
+The `cnpm` is provided by taobao.  
+Refer to [npm.taobao.org](https://npm.taobao.org) to learn how to install it.  
 
 ----
 
@@ -33,7 +33,7 @@ npm install
 
 ----
 
-* Install the Electron
+* Install the Electron  
 Visit [https://electron.atom.io/](https://electron.atom.io/) , download and install the electron.  
 Add the install dir to the enviroment value PATH, so that you can run `electron` in the command line.  
 
