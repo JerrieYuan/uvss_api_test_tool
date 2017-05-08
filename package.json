@@ -1,6 +1,6 @@
 {
   "name": "uvss_api_test_tool",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "private": true,
   "dependencies": {
     "react": "15.4.2",
