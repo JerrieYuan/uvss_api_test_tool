@@ -66,7 +66,11 @@ The command will run the code in debug mode.
 
 ## Watch the online Demo 
 
-[Demo](https://jerrieyuan.github.io/uvss_api_test_tool/)
+[Demo1](http://odokxjcuk.bkt.clouddn.com/)  
+You can test the API here.  
 
-Because of the security settings of the browser, you can not test the API directly with the online demo.  
-Please download the [release version](https://github.com/JerrieYuan/uvss_api_test_tool/releases) for test.
+[Demo2](https://jerrieyuan.github.io/uvss_api_test_tool/)  
+Because of the security settings of the browser(Mixed contents in https & http), you can not test the API directly with the online demo.  
+Please download the [release version](https://github.com/JerrieYuan/uvss_api_test_tool/releases) for test.  
+
+

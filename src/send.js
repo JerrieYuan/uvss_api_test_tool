@@ -13,7 +13,8 @@ import {
   DEFAULT_URL,
   DEFAULT_USER,
   DEFAULT_PASSWD,
-  randId
+  randId,
+  isWeb
 } from './static.js';
 import {
   UTTCmd,
@@ -31,17 +32,26 @@ class UTTBUTTON extends Component {
     let conf = this.props.others;
     let url = conf.url.replace(/http:\/\//ig, '');
     url = `http://${conf.user}:${conf.passwd}@${url}`;
+    let fn = this.props.onRecv;
 
-    console.log(url);
+    if (isWeb) {
+      fn(`${url}?${str}`);
+    } else {
+      jQuery.get(url, str, (data, status) => {
+        console.log(data);
+        let fn = this.props.onRecv;
+        if (typeof data === "string") {
+          try {
+            data = JSON.parse(String(data));
+          } catch (e) {
+            // statements
+            console.log(e);
+          }
+        }
+        fn(data);
+      });
+    }
 
-    jQuery.get(url, str, (data, status) => {
-      console.log(data);
-      let fn = this.props.onRecv;
-      if (typeof data === "string") {
-        data = JSON.parse(String(data));
-      }
-      fn(data);
-    });
   }
 
   render() {

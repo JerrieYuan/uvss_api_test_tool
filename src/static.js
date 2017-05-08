@@ -18,6 +18,15 @@ const randId = () => {
   return "unikid_" + idIndex.toString(16);
 };
 
+const isWeb = () => {
+  let REG = /^http*/gi;
+  let url = location.href;
+  if (REG.test(url)) {
+    return true;
+  }
+  return false;
+}
+
 const Expo = {
   CMD: "cmd",
   KEY: "key",
@@ -27,10 +36,11 @@ const Expo = {
   CODE: "code",
   LABEL_LEN: 3,
   INPUT_LEN: 12 - 3,
-  DEFAULT_URL: "http://192.168.1.167/cgi-bin/UVSSapi.cgi",
+  DEFAULT_URL: "http://192.168.1.168/cgi-bin/UVSSapi.cgi",
   DEFAULT_USER: "root",
   DEFAULT_PASSWD: "admin",
-  randId: randId
+  randId: randId,
+  isWeb: isWeb()
 };
 
 

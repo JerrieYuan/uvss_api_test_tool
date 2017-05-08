@@ -12,7 +12,8 @@ import {
   VALUE,
   LABEL_LEN,
   INPUT_LEN,
-  randId
+  randId,
+  isWeb
 } from './static.js';
 
 const Rb = require('react-bootstrap');
@@ -127,6 +128,58 @@ class UTTText extends Component {
   }
 }
 
+class LocalPanel extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: {
+        cmd: "get",
+        key: "device id",
+        value: []
+      },
+      type: "get",
+    };
+  }
+
+  onReceive(data) {
+    this.setState({
+      data: data
+    });
+  }
+
+  render() {
+    return (<div>
+        <Rb.Form horizontal>
+          <UTTCmd {...this.state} />
+          <UTTKey {...this.state} />
+          <UTTCode {...this.state} />
+          <UTTValue {...this.state} />
+          <UTTText {...this.state} />
+
+        </Rb.Form>
+      </div>);
+  }
+}
+
+class WebPanel extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
+  onReceive(data) {
+    this.setState({
+      url: data
+    });
+  }
+
+  render() {
+    return (
+      <iframe src={this.state.url} width="100%" height="500px" frameBorder={0} />
+    );
+  }
+}
+
 class RecvPanel extends Component {
   constructor(props) {
     super(props);
@@ -139,25 +192,23 @@ class RecvPanel extends Component {
       type: "get",
     };
   }
+
   onReceive(data) {
-    this.setState({
-      data: data
-    });
+    this.refs["stdout"].onReceive.bind(this.refs["stdout"])(data);
+    console.log(data);
+    console.log(this.refs["stdout"]);
   }
 
   render() {
-    return (
-      <div>
-        <Rb.Form horizontal>
-          <UTTCmd {...this.state} />
-          <UTTKey {...this.state} />
-          <UTTCode {...this.state} />
-          <UTTValue {...this.state} />
-          <UTTText {...this.state} />
-
-        </Rb.Form>
-      </div>
-    );
+    if (isWeb) {
+      return (
+        <WebPanel ref="stdout" />
+      );
+    } else {
+      return (
+        <LocalPanel ref="stdout" />
+      );
+    }
   }
 }
 

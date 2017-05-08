@@ -49,6 +49,7 @@ class UTTKEY extends Component {
       "netmask",
       "server ip",
       "trigger type",
+      "test image",
       "remove image",
       "reboot"
     ];
