@@ -1,6 +1,12 @@
-import React, { Component } from 'react';
-import {UTTSendPanel} from './send.js';
-import {UTTRecvPanel} from './recv';
+import React, {
+  Component
+} from 'react';
+import {
+  UTTSendPanel
+} from './send.js';
+import {
+  UTTRecvPanel
+} from './recv';
 //import $ from 'jquery';
 //import jQuery from 'jquery';
 //import bootstrap from 'bootstrap'
@@ -12,21 +18,21 @@ const Rb = require('react-bootstrap');
 
 class UTTPanel extends Component {
 
-  onRecv(data){
+  onRecv(data) {
     this.refs["recv"].onReceive.bind(this.refs["recv"])(data);
   }
 
-  render(){
+  render() {
     //              <UTTRecvPanel />
     return (
-      <Rb.Grid fluid={true}>
+      <Rb.Grid>
         <Rb.Row>
-          <Rb.Col xs={6} md={6}>
+          <Rb.Col md={6}>
             <Rb.Panel header="Send message">
               <UTTSendPanel onRecv={this.onRecv.bind(this)} />
             </Rb.Panel>
           </Rb.Col>
-          <Rb.Col xs={6} md={6}>
+          <Rb.Col md={6}>
             <Rb.Panel header="Message from device">
               <UTTRecvPanel ref="recv" />
             </Rb.Panel>
@@ -38,7 +44,7 @@ class UTTPanel extends Component {
 }
 
 class App extends Component {
-  render () {
+  render() {
     return (
       <UTTPanel/>
     );
@@ -46,6 +52,5 @@ class App extends Component {
 }
 
 module.exports = {
-  App:App
+  App: App
 };
-

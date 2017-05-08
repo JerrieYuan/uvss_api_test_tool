@@ -68,18 +68,18 @@ class UTTDEVICEIP extends Component {
     return (
       <div>
       <Rb.FormGroup>
-        <Rb.Col componentClass={Rb.ControlLabel} xs={LABEL_LEN}>URL</Rb.Col>
-        <Rb.Col xs={INPUT_LEN}>
+        <Rb.Col componentClass={Rb.ControlLabel} sm={LABEL_LEN}>URL</Rb.Col>
+        <Rb.Col sm={INPUT_LEN}>
           <Rb.FormControl componentClass="input" placeholder="http://x.x.x.x/cgi-bin/xxx.cgi" onChange={this.changeURL.bind(this)} defaultValue={this.props.others.url} />
         </Rb.Col>
       </Rb.FormGroup>
         <Rb.FormGroup>
-          <Rb.Col componentClass={Rb.ControlLabel} xs={LABEL_LEN}> Auth</Rb.Col>
-          <Rb.Col xs={Math.floor(INPUT_LEN/2)}>
+          <Rb.Col componentClass={Rb.ControlLabel} sm={LABEL_LEN}> Auth</Rb.Col>
+          <Rb.Col sm={Math.floor(INPUT_LEN/2)}>
             <Rb.FormControl defaultValue={this.props.others.user} componentClass="input" placeholder="username" onChange={this.changeUser.bind(this)} />
 
           </Rb.Col>
-          <Rb.Col xs={Math.floor(INPUT_LEN/2)}>
+          <Rb.Col sm={Math.floor(INPUT_LEN/2)}>
             <Rb.FormControl defaultValue={this.props.others.passwd} componentClass="input" placeholder="passwd" onChange={this.changePasswd.bind(this)}/>
           </Rb.Col>
         </Rb.FormGroup>
@@ -123,8 +123,8 @@ class UTTPARAMS extends Component {
   render() {
     return (
       <Rb.FormGroup controlId={`${this.props.type}_${KEY}`}>
-        <Rb.Col componentClass={Rb.ControlLabel} xs={LABEL_LEN}>{PARAMS}</Rb.Col>
-        <Rb.Col xs={INPUT_LEN}>
+        <Rb.Col componentClass={Rb.ControlLabel} sm={LABEL_LEN}>{PARAMS}</Rb.Col>
+        <Rb.Col sm={INPUT_LEN}>
           <div>
             {this.state.items.map(this.setItem.bind(this))}
           </div>

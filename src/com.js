@@ -26,8 +26,8 @@ class UTTCMD extends Component {
   render() {
     return (
       <Rb.FormGroup controlId={`${this.props.type}_${CMD}`}>
-        <Rb.Col componentClass={Rb.ControlLabel} xs={LABEL_LEN}>{CMD}</Rb.Col>
-        <Rb.Col xs={INPUT_LEN}>
+        <Rb.Col componentClass={Rb.ControlLabel} sm={LABEL_LEN}>{CMD}</Rb.Col>
+        <Rb.Col sm={INPUT_LEN}>
           <Rb.FormControl defaultValue={this.props.data[CMD]} componentClass="select" placeholder="select" onChange={this.handleChange.bind(this)}>
             <option value="get">Get</option>
             <option value="set">Set</option>
@@ -63,8 +63,8 @@ class UTTKEY extends Component {
   render() {
     return (
       <Rb.FormGroup controlId={`${this.props.type}_${KEY}`}>
-        <Rb.Col componentClass={Rb.ControlLabel} xs={LABEL_LEN}>{KEY}</Rb.Col>
-        <Rb.Col xs={INPUT_LEN}>
+        <Rb.Col componentClass={Rb.ControlLabel} sm={LABEL_LEN}>{KEY}</Rb.Col>
+        <Rb.Col sm={INPUT_LEN}>
           <Rb.FormControl defaultValue={this.props.data[KEY]} componentClass="select" placeholder="select" onChange={this.handleChange.bind(this)}>
             {this.VALUES.map((d)=>{
               return <option key={randId()} value={d}>{d}</option>;
@@ -87,10 +87,10 @@ class UTTANITEM extends Component {
 
   render() {
     return <Rb.FormGroup>
-      <Rb.Col xs={6} >
+      <Rb.Col sm={6} >
         <Rb.FormControl componentClass="input" placeholder={KEY} onChange={this.changeKey.bind(this)} defaultValue={this.props.data[KEY]}/>
       </Rb.Col>
-      <Rb.Col xs={6}>
+      <Rb.Col sm={6}>
         <Rb.FormControl componentClass="input" placeholder={VALUE} onChange={this.changeValue.bind(this)} defaultValue={this.props.data[VALUE]} />
       </Rb.Col>
     </Rb.FormGroup>
