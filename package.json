@@ -1,7 +1,8 @@
 {
   "name": "uvss_api_test_tool",
-  "version": "0.1.2",
+  "version": "0.1.4",
   "private": true,
+  "main": "index.js",
   "dependencies": {
     "react": "15.4.2",
     "react-dom": "15.4.2",
