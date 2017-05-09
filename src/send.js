@@ -28,6 +28,7 @@ const Rb = require('react-bootstrap');
 
 class UTTBUTTON extends Component {
   sendMsg() {
+    console.log(this.props.data);
     let str = JSON.stringify(this.props.data);
     let conf = this.props.others;
     let url = conf.url.replace(/http:\/\//ig, '');
@@ -112,8 +113,6 @@ class UTTPARAMS extends Component {
     );
   }
 
-
-
   addItem() {
     let item = {
       key: "",
@@ -124,24 +123,40 @@ class UTTPARAMS extends Component {
   }
 
   deleteItem() {
-    if (this.state.items.length > 0) {
-      this.state.items.pop();
-      this.forceUpdate();
+      if (this.state.items.length > 0) {
+        this.state.items.pop();
+        this.forceUpdate();
+      }
     }
+    //          <Rb.Button bsSize="small" onClick={this.addItem.bind(this)}>Add an Item</Rb.Button> {'  '}
+    //          <Rb.Button bsSize="small" bsStyle="warning" onClick={this.deleteItem.bind(this)}>Delete an Item</Rb.Button>
+
+  setStateByArray(arr) {
+    let data = [];
+    for (let i = 0; i < arr.length; i++) {
+      data.push({
+        key: arr[i],
+        value: ""
+      });
+    }
+    this.props.data.params = data;
+    /*
+    this.setState({
+      items: data
+    });
+    */
+    this.setState({
+      items: this.props.data.params
+    });
+    //this.forceUpdate();
   }
 
   render() {
     return (
-      <Rb.FormGroup controlId={`${this.props.type}_${KEY}`}>
-        <Rb.Col componentClass={Rb.ControlLabel} sm={LABEL_LEN}>{PARAMS}</Rb.Col>
-        <Rb.Col sm={INPUT_LEN}>
-          <div>
-            {this.state.items.map(this.setItem.bind(this))}
-          </div>
-          <Rb.Button bsSize="small" onClick={this.addItem.bind(this)}>Add an Item</Rb.Button> {'  '}
-          <Rb.Button bsSize="small" bsStyle="warning" onClick={this.deleteItem.bind(this)}>Delete an Item</Rb.Button>
-        </Rb.Col>
-      </Rb.FormGroup>
+      <div>
+        {this.state.items.map(this.setItem.bind(this))}
+      </div>
+
     );
   }
 }
@@ -164,14 +179,25 @@ class UTTSendPanel extends Component {
       onRecv: props.onRecv
     };
   }
+
+  onKeyChange(data) {
+    let onChangeForCmd = this.refs["cmd"].setState.bind(this.refs["cmd"]);
+    onChangeForCmd(data);
+  }
+
+  onCmdChange(data) {
+    console.log(data);
+    this.refs["params"].setStateByArray(data);
+  }
+
   render() {
     return (
       <div>
         <Rb.Form horizontal>
           <UTTDEVICEIP {...this.state} />
-          <UTTCmd {...this.state} />
-          <UTTKey {...this.state} />
-          <UTTPARAMS {...this.state} />
+          <UTTKey {...this.state} changeKey={this.onKeyChange.bind(this)} />
+          <UTTCmd {...this.state} ref="cmd" changeCmd={this.onCmdChange.bind(this)} />
+          <UTTPARAMS {...this.state} ref="params" />
           <UTTBUTTON {...this.state}/>
         </Rb.Form>
       </div>

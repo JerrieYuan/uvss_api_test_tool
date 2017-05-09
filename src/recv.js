@@ -50,10 +50,10 @@ class UTTKey extends Component {
 class UTTAnItem extends Component {
   render() {
     return <Rb.FormGroup>
-      <Rb.Col sm={6} >
-        <Rb.FormControl componentClass="input" placeholder={KEY} defaultValue={this.props.data[KEY]} readOnly/>
+      <Rb.Col sm={LABEL_LEN} >
+        <Rb.ControlLabel className="pull-right">{this.props.data[KEY]}</Rb.ControlLabel>
       </Rb.Col>
-      <Rb.Col sm={6}>
+      <Rb.Col sm={INPUT_LEN}>
         <Rb.FormControl componentClass="input" placeholder={VALUE} defaultValue={this.props.data[VALUE]} readOnly />
       </Rb.Col>
     </Rb.FormGroup>
@@ -69,7 +69,7 @@ class UTTValue extends Component {
     }
 
     if (items.length === 0) {
-      return <Rb.FormControl componentClass="input" readOnly value="null" />
+      return null;
     } else {
       return items.map(this.setItem.bind(this));
     }
@@ -83,14 +83,9 @@ class UTTValue extends Component {
   render() {
 
     return (
-      <Rb.FormGroup controlId={`${this.props.type}_${KEY}`}>
-        <Rb.Col componentClass={Rb.ControlLabel} sm={LABEL_LEN}>{VALUE}</Rb.Col>
-        <Rb.Col sm={INPUT_LEN}>
-          <div>
-            {this.rangeItems()}
-          </div>
-        </Rb.Col>
-      </Rb.FormGroup>
+      <div>
+        {this.rangeItems()}
+      </div>
     );
   }
 }
@@ -168,14 +163,18 @@ class WebPanel extends Component {
   }
 
   onReceive(data) {
-    this.setState({
-      url: data
-    });
+    if (data == this.state.url) {
+      this.refs["iframe"].contentWindow.location.reload();
+    } else {
+      this.setState({
+        url: data
+      });
+    }
   }
 
   render() {
     return (
-      <iframe src={this.state.url} width="100%" height="500px" frameBorder={0} />
+      <iframe ref="iframe" src={this.state.url} width="100%" height="500px" frameBorder={0} />
     );
   }
 }

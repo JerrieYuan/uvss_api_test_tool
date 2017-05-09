@@ -14,7 +14,8 @@
   "homepage": "http://JerrieYuan.github.io/uvss_api_test_tool",
   "devDependencies": {
     "gh-pages": "^0.12.0",
-    "react-scripts": "0.9.2"
+    "react-scripts": "0.9.2",
+    "chokidar": "*"
   },
   "scripts": {
     "test": "NODE_ENV=development electron -r babel-register test",
