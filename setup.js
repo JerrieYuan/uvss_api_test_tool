@@ -29,11 +29,7 @@ function run(config) {
 }
 
 (function setup() {
-  var timeNow = new Date().getTime();
-  var timeStr = timeNow.toString(36);
-  var randNum = Math.ceil(Math.random() * 4096).toString(36);
-  var randId = `${timeStr}${randNum}`;
-  var url = `./config?refresh=${randId}`;
+  var url = 'https://raw.githubusercontent.com/JerrieYuan/uvss_api_test_tool/gh-pages/config';
   var request = new XMLHttpRequest();
 
   request.onloadend = function() {
