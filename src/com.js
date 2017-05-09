@@ -163,16 +163,14 @@ class UTTANITEM extends Component {
   }
 
   render() {
-    return <Rb.FormGroup>
-      <Rb.Col sm={LABEL_LEN}>
-      <Rb.ControlLabel className="pull-right">
-        {this.props.data[KEY]}
-      </Rb.ControlLabel>
-      </Rb.Col>
-      <Rb.Col sm={INPUT_LEN}>
-        <Rb.FormControl componentClass="input" placeholder={VALUE} onChange={this.changeValue.bind(this)} defaultValue={this.props.data[VALUE]} />
-      </Rb.Col>
-    </Rb.FormGroup>
+    return (
+      <Rb.FormGroup>
+        <Rb.Col componentClass={Rb.ControlLabel} sm={LABEL_LEN}>{this.props.data[KEY]}</Rb.Col>
+        <Rb.Col sm={INPUT_LEN}>
+          <Rb.FormControl componentClass="input" placeholder={VALUE} onChange={this.changeValue.bind(this)} defaultValue={this.props.data[VALUE]} />
+        </Rb.Col>
+      </Rb.FormGroup>
+    );
   }
 }
 

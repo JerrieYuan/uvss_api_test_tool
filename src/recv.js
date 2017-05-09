@@ -50,9 +50,7 @@ class UTTKey extends Component {
 class UTTAnItem extends Component {
   render() {
     return <Rb.FormGroup>
-      <Rb.Col sm={LABEL_LEN} >
-        <Rb.ControlLabel className="pull-right">{this.props.data[KEY]}</Rb.ControlLabel>
-      </Rb.Col>
+      <Rb.Col componentClass={Rb.ControlLabel} sm={LABEL_LEN}>{this.props.data[KEY]}</Rb.Col>
       <Rb.Col sm={INPUT_LEN}>
         <Rb.FormControl componentClass="input" placeholder={VALUE} defaultValue={this.props.data[VALUE]} readOnly />
       </Rb.Col>
